@@ -1,0 +1,13 @@
+<Solution>
+  <Project Path="BLL/MovieRentalSystem.BLL.csproj">
+    <BuildDependency Project="DAL/MovieRentalSystem.DAL.csproj" />
+    <BuildDependency Project="Models/MovieRentalSystem.Models.csproj" />
+  </Project>
+  <Project Path="DAL/MovieRentalSystem.DAL.csproj">
+    <BuildDependency Project="Models/MovieRentalSystem.Models.csproj" />
+  </Project>
+  <Project Path="Models/MovieRentalSystem.Models.csproj" />
+  <Project Path="UI/MovieRentalSystem.UI.csproj">
+    <BuildDependency Project="BLL/MovieRentalSystem.BLL.csproj" />
+  </Project>
+</Solution>
