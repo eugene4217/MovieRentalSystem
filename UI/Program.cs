@@ -54,6 +54,7 @@ class Program
 2. Показать все
 3. Редактировать
 4. Удалить
+5. Найти фильм
 0. Назад
 """);
             Console.Write("\nВведите цифру: ");
@@ -67,6 +68,7 @@ class Program
                 case "2": service.ShowMovies(); Console.ReadKey(); break;
                 case "3": service.EditMovie(); Console.ReadKey(); break;
                 case "4": service.DeleteMovie(); Console.ReadKey(); break;
+                case "5": service.SearchMovie(); Console.ReadKey(); break;
                 default:
                     Console.WriteLine("Неверный ввод! Попробуйте еще раз...");
                     Thread.Sleep(1000); 
@@ -86,6 +88,7 @@ class Program
 2. Показать всех
 3. Редактировать
 4. Удалить
+5. Найти клиента
 0. Назад
 """);
             Console.Write("\nВведите цифру: ");
@@ -99,6 +102,7 @@ class Program
                 case "2": service.ShowClients(); Console.ReadKey(); break;
                 case "3": service.EditClient(); Console.ReadKey(); break;
                 case "4": service.DeleteClient(); Console.ReadKey(); break;
+                case "5": service.SearchClient(); Console.ReadKey(); break;
                 default:
                     Console.WriteLine("Ошибка ввода! Такого действия не существует.");
                     Thread.Sleep(1000);

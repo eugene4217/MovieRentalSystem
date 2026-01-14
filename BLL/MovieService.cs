@@ -51,5 +51,24 @@ namespace MovieRentalSystem.BLL
                 Console.WriteLine("Удалено.");
             }
         }
+        public void SearchMovie()
+        {
+            Console.Write("Введите название фильма (или часть названия) для поиска: ");
+            string term = Console.ReadLine() ?? "";
+            var results = _repository.SearchMovies(term);
+
+            Console.WriteLine("\n--- РЕЗУЛЬТАТЫ ПОИСКА ---");
+            if (results.Count == 0)
+            {
+                Console.WriteLine("По вашему запросу ничего не найдено.");
+            }
+            else
+            {
+                foreach (var m in results)
+                {
+                    Console.WriteLine($"ID: {m.Id} | {m.Title} | Цена/день: {m.PricePerDay} руб. | {(m.IsAvailable ? "[Доступен]" : "[В прокате]")}");
+                }
+            }
+        }
     }
 }

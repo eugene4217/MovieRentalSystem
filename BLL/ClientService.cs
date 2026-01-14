@@ -56,5 +56,25 @@ namespace MovieRentalSystem.BLL
             int id = int.Parse(Console.ReadLine());
             _repository.DeleteClient(id);
         }
+
+        public void SearchClient()
+        {
+            Console.Write("Введите имя клиента для поиска: ");
+            string term = Console.ReadLine() ?? "";
+            var results = _repository.SearchClients(term);
+
+            Console.WriteLine("\n--- РЕЗУЛЬТАТЫ ПОИСКА ---");
+            if (results.Count == 0)
+            {
+                Console.WriteLine("Клиент с таким именем не найден.");
+            }
+            else
+            {
+                foreach (var c in results)
+                {
+                    Console.WriteLine($"ID: {c.Id} | ФИО: {c.FullName}");
+                }
+            }
+        }
     }
 }

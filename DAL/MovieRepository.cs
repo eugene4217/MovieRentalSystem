@@ -7,6 +7,25 @@ namespace MovieRentalSystem.DAL
 {
     public class MovieRepository : RepositoryBase
     {
+        public List<Movie> SearchMovies(string term)
+        {
+            var list = new List<Movie>();
+            using var conn = GetConnection();
+            using var cmd = new SQLiteCommand("SELECT * FROM Movies WHERE Title LIKE @term", conn);
+            cmd.Parameters.AddWithValue("@term", $"%{term}%");
+            using var reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                list.Add(new Movie
+                {
+                    Id = Convert.ToInt32(reader["Id"]),
+                    Title = reader["Title"].ToString() ?? "",
+                    PricePerDay = Convert.ToDecimal(reader["PricePerDay"]),
+                    IsAvailable = Convert.ToInt32(reader["IsAvailable"]) == 1
+                });
+            }
+            return list;
+        }
         public void AddMovie(Movie movie)
         {
             using var conn = GetConnection();
